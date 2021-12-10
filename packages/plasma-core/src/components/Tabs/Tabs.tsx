@@ -16,6 +16,17 @@ export interface TabsProps extends AsProps, DisabledProps, React.HTMLAttributes<
     stretch?: boolean;
 }
 
+const StyledContainer = styled.div<TabsProps>`
+    padding: 0.25rem;
+    margin: -0.25rem;
+
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+`;
+
 const StyledTabs = styled.div<TabsProps>`
     ${applyDisabled}
 
@@ -67,5 +78,7 @@ const StyledTabs = styled.div<TabsProps>`
  * Контейнер вкладок.
  */
 export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(({ role = 'tablist', ...rest }, ref) => (
-    <StyledTabs ref={ref} role={role} {...rest} />
+    <StyledContainer>
+        <StyledTabs ref={ref} role={role} {...rest} />
+    </StyledContainer>
 ));
