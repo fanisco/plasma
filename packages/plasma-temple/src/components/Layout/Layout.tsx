@@ -58,13 +58,15 @@ export const Layout: React.FC<LayoutProps> = ({ children, ignoreInsets }) => {
 
     return (
         <LayoutElementContext.Provider value={scrollableElementRef.current}>
-            <StyledLayout
-                windowInnerHeight={windowInnerHeight}
-                insets={ignoreInsets ? defaultInsets : insets}
-                ref={scrollableElementRef}
-            >
-                <Container>{children}</Container>
-            </StyledLayout>
+            <Container>
+                <StyledLayout
+                    windowInnerHeight={windowInnerHeight}
+                    insets={ignoreInsets ? defaultInsets : insets}
+                    ref={scrollableElementRef}
+                >
+                    {children}
+                </StyledLayout>
+            </Container>
         </LayoutElementContext.Provider>
     );
 };
